@@ -3,8 +3,8 @@ FROM python:3.12-slim-bookworm
 WORKDIR /app
 RUN useradd --create-home appuser
 
-ENV PYTHONUNBUFFERED 1
-ENV PYTHONFAULTHANDLER 1
+ENV PYTHONUNBUFFERED=1
+ENV PYTHONFAULTHANDLER=1
 
 RUN export DEBIAN_FRONTEND=noninteractive \
     && apt update \
@@ -21,5 +21,5 @@ RUN tar -xf /tmp/multirun-x86_64-linux-gnu-${MULTIRUN_VERSION}.tar.gz \
 
 RUN chown appuser:appuser /app
 
-ENV POETRY_VIRTUALENVS_CREATE 0
+ENV POETRY_VIRTUALENVS_CREATE=0
 RUN pip install --upgrade poetry
