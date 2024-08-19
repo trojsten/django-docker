@@ -23,3 +23,6 @@ RUN chown appuser:appuser /app
 
 ENV POETRY_VIRTUALENVS_CREATE=0
 RUN pip install --upgrade poetry
+
+COPY base /base
+CMD ["/base/start.sh"]
