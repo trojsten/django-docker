@@ -24,5 +24,7 @@ RUN chown appuser:appuser /app
 ENV POETRY_VIRTUALENVS_CREATE=0
 RUN pip install --upgrade poetry
 
+ENV WEB_CONCURRENCY=4
+
 COPY base /base
 CMD ["/base/start.sh"]
