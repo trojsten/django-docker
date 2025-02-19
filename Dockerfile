@@ -1,4 +1,4 @@
-FROM python:3.12-slim-bookworm
+FROM ghcr.io/astral-sh/uv:python3.12-bookworm-slim
 
 WORKDIR /app
 RUN useradd --create-home appuser
@@ -21,10 +21,9 @@ RUN tar -xf /tmp/multirun-x86_64-linux-gnu-${MULTIRUN_VERSION}.tar.gz \
 
 RUN chown appuser:appuser /app
 
-ENV POETRY_VIRTUALENVS_CREATE=0
-RUN pip install --upgrade poetry
-
+ENV PATH="/app/.venv/bin:$PATH"
 ENV WEB_CONCURRENCY=4
+USER appuser
 
 COPY base /base
 CMD ["/base/start.sh"]
