@@ -8,7 +8,7 @@ ENV PYTHONFAULTHANDLER=1
 
 RUN export DEBIAN_FRONTEND=noninteractive \
     && apt update \
-    && apt install -y caddy xz-utils \
+    && apt install -y caddy git xz-utils \
     && apt -y upgrade \
     && apt -y clean \
     && rm -rf /var/lib/apt/lists/*
